@@ -63,3 +63,7 @@ body {
     background: #ef5d50;
     color: #fff;
 }
+
+.pomodoro .details {
+    margin: 20px 0;
+}
