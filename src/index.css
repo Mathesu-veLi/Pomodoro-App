@@ -43,6 +43,12 @@ body {
     text-align: center;
 }
 
+.pomodoro .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .pomodoro button {
     background: #41e1ba;
     border: none;
@@ -51,4 +57,9 @@ body {
     color: #000;
     transition: background-color 300ms ease-in-out;
     margin: 20px auto;
+}
+
+.working .pomodoro button {
+    background: #ef5d50;
+    color: #fff;
 }
