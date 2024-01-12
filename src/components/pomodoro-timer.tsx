@@ -103,7 +103,7 @@ export function PomodoroTimer(props: IProps): JSX.Element {
 
     return (
         <div className="pomodoro">
-            <h2>You are: working</h2>
+            <h2>You are: {working ? 'Trabalhando' : 'Descansando'}</h2>
             <Timer mainTime={mainTime} />
 
             <div className="controls">
