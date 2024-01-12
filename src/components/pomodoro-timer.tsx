@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useInterval } from '../hooks/use-interval';
 
 import { Button } from './button';
@@ -42,23 +42,33 @@ export function PomodoroTimer(props: IProps): JSX.Element {
         timeCounting ? 1000 : null,
     );
 
-    const configureWork = () => {
+    const configureWork = useCallback(() => {
         setTimeCounting(true);
         setWorking(true);
         setResting(false);
         setMainTime(props.defaultPomodoroTime);
         audioStartWorking.play();
-    };
+    }, [setTimeCounting, setWorking, setResting, setMainTime, props.defaultPomodoroTime]);
 
-    const configureRest = (long: boolean) => {
-        setTimeCounting(true);
-        setWorking(false);
-        setResting(true);
+    const configureRest = useCallback(
+        (long: boolean) => {
+            setTimeCounting(true);
+            setWorking(false);
+            setResting(true);
 
-        setMainTime(long ? props.longRestTime : props.shortRestTime);
+            setMainTime(long ? props.longRestTime : props.shortRestTime);
 
-        audioStopWorking.play();
-    };
+            audioStopWorking.play();
+        },
+        [
+            setTimeCounting,
+            setWorking,
+            setResting,
+            setMainTime,
+            props.longRestTime,
+            props.shortRestTime,
+        ],
+    );
 
     useEffect(() => {
         if (working) document.body.classList.add('working');
