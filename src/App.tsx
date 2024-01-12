@@ -4,7 +4,7 @@ import { PomodoroTimer } from './components/pomodoro-timer';
 
 function App() {
     return (
-        <div className="App">
+        <div className="container">
             <PomodoroTimer
                 defaultPomodoroTime={1500}
                 shortRestTime={300}
