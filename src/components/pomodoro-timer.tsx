@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useInterval } from '../hooks/use-interval';
 
 import { Button } from './button';
@@ -13,9 +13,13 @@ interface IProps {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function PomodoroTimer(props: IProps): JSX.Element {
-    const [mainTime, setMainTime] = React.useState(props.defaultPomodoroTime);
-    const [timeCounting, setTimeCounting] = React.useState(false);
-    const [working, setWorking] = React.useState(false);
+    const [mainTime, setMainTime] = useState(props.defaultPomodoroTime);
+    const [timeCounting, setTimeCounting] = useState(false);
+    const [working, setWorking] = useState(false);
+
+    useEffect(() => {
+        if (working) document.body.classList.add('working');
+    }, [working]);
 
     useInterval(
         () => {
@@ -26,7 +30,7 @@ export function PomodoroTimer(props: IProps): JSX.Element {
 
     const configureWork = () => {
         setTimeCounting(true);
-        setWorking(working);
+        setWorking(true);
     };
 
     return (
