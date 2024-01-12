@@ -38,6 +38,7 @@ export function PomodoroTimer(props: IProps): JSX.Element {
     useInterval(
         () => {
             setMainTime(mainTime - 1);
+            if (working) setFullWorkingTime(fullWorkingTime + 1);
         },
         timeCounting ? 1000 : null,
     );
