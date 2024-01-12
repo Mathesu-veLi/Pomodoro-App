@@ -6,6 +6,9 @@ import { Timer } from './timer';
 
 interface IProps {
     defaultPomodoroTime: number;
+    shortRestTime: number;
+    longRestTime: number;
+    cycles: number;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
